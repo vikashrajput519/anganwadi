@@ -2,12 +2,12 @@ package com.vs.anganbaditokengeneration.service.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.stereotype.Service;
 
 import com.vs.anganbaditokengeneration.enums.ConfigEnums;
@@ -22,25 +22,24 @@ public class ConfigServiceImpl implements ConfigService{
 	public WebDriver getDriver() {
 		
 		WebDriver driver = null;
-		//WebDriverManager.chromedriver().browserVersion(ConfigEnums.CHROME_VERSION.getConfigMessage()).setup();
+		WebDriverManager.chromedriver().browserVersion(ConfigEnums.CHROME_VERSION.getConfigMessage()).setup();
 		
-		WebDriverManager.firefoxdriver().browserVersion("84.0.2").setup();
+		//WebDriverManager.firefoxdriver().browserVersion("84.0.2").setup();
 		
 		
 		  ChromeOptions chromeOptions = new ChromeOptions();
 		  chromeOptions.addArguments(ConfigEnums.WINDOW_STYLE.getConfigMessage());
-		  chromeOptions.addArguments(ConfigEnums.AUTOMATION_TYPE.getConfigMessage());
-		  chromeOptions.addArguments(ConfigEnums.SANDBOX.getConfigMessage());
+		  //chromeOptions.addArguments(ConfigEnums.SANDBOX.getConfigMessage());
 		  chromeOptions.addArguments(ConfigEnums.INFOBARS.getConfigMessage());
 		  
 		  chromeOptions.addArguments(ConfigEnums.USAGE.getConfigMessage());
 		  chromeOptions.addArguments(ConfigEnums.NAVIGATION.getConfigMessage());
 		  chromeOptions.addArguments(ConfigEnums.GPU.getConfigMessage());
-		 
+		  chromeOptions.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
 		
-		//driver = new ChromeDriver(chromeOptions);
+		driver = new ChromeDriver(chromeOptions);
 		
-		driver = new FirefoxDriver();
+		//driver = new FirefoxDriver();
 		
 		return driver;
 	}

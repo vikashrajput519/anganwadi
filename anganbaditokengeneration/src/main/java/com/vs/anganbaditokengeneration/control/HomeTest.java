@@ -111,8 +111,7 @@ public class HomeTest {
 		  
 		  ChromeOptions options = new ChromeOptions();
 		  options.addArguments(ConfigEnums.WINDOW_STYLE.getConfigMessage());
-		  options.addArguments(ConfigEnums.AUTOMATION_TYPE.getConfigMessage());
-		  options.addArguments(ConfigEnums.SANDBOX.getConfigMessage());
+		  //options.addArguments(ConfigEnums.SANDBOX.getConfigMessage());
 		  options.addArguments(ConfigEnums.INFOBARS.getConfigMessage());
 		  
 		  options.addArguments(ConfigEnums.USAGE.getConfigMessage());

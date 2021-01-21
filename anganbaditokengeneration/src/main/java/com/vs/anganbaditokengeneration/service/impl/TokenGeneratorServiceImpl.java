@@ -69,7 +69,7 @@ public class TokenGeneratorServiceImpl implements TokenGeneratorService {
 			}catch(Exception e)
 			{
 				webDriver.close();
-				//webDriver.quit();
+				webDriver.quit();
 			}
 			
 			if(null == table)
@@ -149,7 +149,7 @@ public class TokenGeneratorServiceImpl implements TokenGeneratorService {
 			}
 			
 			webDriver.close();
-			//webDriver.quit();
+			webDriver.quit();
 		}
 
 		labharthiDtoRepository.addAll(labharthiDtoList);

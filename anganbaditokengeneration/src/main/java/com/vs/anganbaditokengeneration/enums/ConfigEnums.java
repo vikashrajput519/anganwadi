@@ -3,9 +3,8 @@ package com.vs.anganbaditokengeneration.enums;
 public enum ConfigEnums {
 	
 	// Chrome Properties
-	CHROME_VERSION("87.0.4280.141"),
+	CHROME_VERSION("88.0.4324.96"),
 	WINDOW_STYLE("start-maximized"),
-	AUTOMATION_TYPE("start-maximized"),
 	SANDBOX("--no-sandbox"),
 	INFOBARS("--disable-infobars"),
 	USAGE("--disable-dev-shm-usage"),
