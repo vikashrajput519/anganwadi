@@ -6,8 +6,6 @@ package com.vs.anganbaditokengeneration.domain;
  */
 public class LabharthiDomain {
 	
-	private int serivalNum;
-	
 	private String labharthiName;
 	
 	private String nameOfFather;
@@ -60,14 +58,6 @@ public class LabharthiDomain {
 		this.mobileNum = mobileNum;
 	}
 
-	public int getSerivalNum() {
-		return serivalNum;
-	}
-
-	public void setSerivalNum(int serivalNum) {
-		this.serivalNum = serivalNum;
-	}
-
 	public String getAllFamilyNames() {
 		return allFamilyNames;
 	}
@@ -76,5 +66,31 @@ public class LabharthiDomain {
 		this.allFamilyNames = allFamilyNames;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((mobileNum == null) ? 0 : mobileNum.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		LabharthiDomain other = (LabharthiDomain) obj;
+		if (mobileNum == null) {
+			if (other.mobileNum != null)
+				return false;
+		} else if (!mobileNum.equals(other.mobileNum))
+			return false;
+		return true;
+	}
+
+	
 
 }

@@ -2,8 +2,10 @@ package com.vs.anganbaditokengeneration.service.impl;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -51,14 +53,12 @@ public class PDFProcessServiceImpl implements PDFProcessService{
 	}
 
 	@Override
-	public List<LabharthiDomain> convertPdfDataToDomainObjects(String[] lines, String pdfPath) 
+	public Set<LabharthiDomain> convertPdfDataToDomainObjects(String[] lines, String pdfPath) 
 	{
 		
 		List<String> lineList = getFilteredLine(lines);
 		
-		List<LabharthiDomain> labharthiDomainList = new ArrayList<>();
-		
-		int count = 0;
+		Set<LabharthiDomain> labharthiDomainList = new LinkedHashSet<>();
 		
 		for(String line : lineList)
 		{
@@ -76,7 +76,6 @@ public class PDFProcessServiceImpl implements PDFProcessService{
 			
 			line = line.replace(getFirstWord(line), "");
 			
-			labharthiDomain.setSerivalNum(++count);
 			labharthiDomain.setMobileNum(mobileNum.trim());
 			labharthiDomain.setAadharNum(aadharNum.trim());
 			labharthiDomain.setAllFamilyNames(line);

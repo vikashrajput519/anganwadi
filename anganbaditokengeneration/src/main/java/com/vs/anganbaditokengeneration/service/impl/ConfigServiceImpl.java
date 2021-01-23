@@ -3,6 +3,8 @@ package com.vs.anganbaditokengeneration.service.impl;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.openqa.selenium.WebDriver;
@@ -28,15 +30,18 @@ public class ConfigServiceImpl implements ConfigService{
 		
 		
 		  ChromeOptions chromeOptions = new ChromeOptions();
-		  chromeOptions.addArguments(ConfigEnums.WINDOW_STYLE.getConfigMessage());
-		  //chromeOptions.addArguments(ConfigEnums.SANDBOX.getConfigMessage());
-		  chromeOptions.addArguments(ConfigEnums.INFOBARS.getConfigMessage());
 		  
-		  chromeOptions.addArguments(ConfigEnums.USAGE.getConfigMessage());
-		  chromeOptions.addArguments(ConfigEnums.NAVIGATION.getConfigMessage());
-		  chromeOptions.addArguments(ConfigEnums.GPU.getConfigMessage());
-		  chromeOptions.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
-		
+		  chromeOptions.addArguments("--start-maximized");
+		  chromeOptions.addArguments("--disable-web-security");
+		  chromeOptions.addArguments("--no-proxy-server");
+		  chromeOptions.addArguments("no-sandbox");
+
+		  Map<String, Object> prefs = new HashMap<>();
+		  prefs.put("credentials_enable_service", false);
+		  prefs.put("profile.password_manager_enabled", false);
+
+		  chromeOptions.setExperimentalOption("prefs", prefs);
+		  
 		driver = new ChromeDriver(chromeOptions);
 		
 		//driver = new FirefoxDriver();

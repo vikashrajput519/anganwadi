@@ -4,7 +4,7 @@ package com.vs.anganbaditokengeneration.window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.util.List;
+import java.util.Set;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -37,7 +37,7 @@ public class LabharthiDetailWindow implements ActionListener{
 	private JTextField textPassword;
 	private JButton btnExportTokens;
 	
-	private List<LabharthiDomain> labharthiDomains;
+	private Set<LabharthiDomain> labharthiDomains;
 	
 	@Autowired
 	private PDFProcessService pdfService;
@@ -48,12 +48,16 @@ public class LabharthiDetailWindow implements ActionListener{
 	@Autowired
 	private TokenGeneratorService tokenGeneratorService;
 	
+	int count;
+	
 	public void initializer(HomeWindow homeWindow)
 	{
 		frame = new JFrame();
 		frame.setBounds(100, 100, 950, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		count = 0;
 		
 		table = new JTable();
 
@@ -70,7 +74,7 @@ public class LabharthiDetailWindow implements ActionListener{
 
 		labharthiDomains.forEach(labharthiDomain -> 
 		{
-			defaultTableModel.addRow(new Object[] { labharthiDomain.getSerivalNum(), labharthiDomain.getNameOfFather(),
+			defaultTableModel.addRow(new Object[] { ++count, labharthiDomain.getNameOfFather(),
 					labharthiDomain.getNameOfMother(), labharthiDomain.getAadharNum(),
 					labharthiDomain.getMobileNum(),"Get Token"
 		});

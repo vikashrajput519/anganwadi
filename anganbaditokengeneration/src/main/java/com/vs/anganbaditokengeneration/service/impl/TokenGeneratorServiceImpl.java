@@ -8,6 +8,7 @@ import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,12 @@ public class TokenGeneratorServiceImpl implements TokenGeneratorService {
 					.findElement(
 							By.xpath("//input[@name='ctl00$MainContent$txtPassword'][contains(@id,'txtPassword')]"))
 					.sendKeys(loginDetails.getPasswrod());
+			
+			
+			WebElement webElementCaptchaTxt = webDriver.findElement(By.xpath("//input[contains(@id,'ctl00_MainContent_txtCaptha')]"));
+			new Actions(webDriver).moveToElement(webElementCaptchaTxt).click().perform();
 
+			
 			WebDriverWait wait = new WebDriverWait(webDriver, 50000);
 
 			Boolean element = wait.until(new ExpectedCondition<Boolean>() {
@@ -118,23 +124,41 @@ public class TokenGeneratorServiceImpl implements TokenGeneratorService {
 				WebElement cellTypeCatAge = cells.get(4);
 
 				String[] typeCatAge = cellTypeCatAge.getText().split("\n");
+				
+				if(typeCatAge.length == 1)
+				{
+					labharthiDto.setLabhartiType(typeCatAge[0]);
+				}
+				
+				if(typeCatAge.length == 2)
+				{
+					labharthiDto.setCategory(typeCatAge[1]);
+				}
 
-				labharthiDto.setLabhartiType(typeCatAge[0]);
-
-				labharthiDto.setCategory(typeCatAge[1]);
-
-				labharthiDto.setAgeInMonths(typeCatAge[2]);
+				if(typeCatAge.length == 3)
+				{
+					labharthiDto.setAgeInMonths(typeCatAge[2]);
+				}
 
 				// Getting and Setting name Gender Year
 				WebElement cellNameGenderYear = cells.get(5);
 
 				String[] nameGenderYear = cellNameGenderYear.getText().split("\n");
+				
+				if(nameGenderYear.length == 1)
+				{
+					labharthiDto.setBenificeryName(nameGenderYear[0]);
+				}
 
-				labharthiDto.setBenificeryName(nameGenderYear[0]);
+				if(nameGenderYear.length == 2)
+				{
+					labharthiDto.setGender(nameGenderYear[1]);
+				}
 
-				labharthiDto.setGender(nameGenderYear[1]);
-
-				labharthiDto.setYearOfBirth(nameGenderYear[2]);
+				if(nameGenderYear.length == 3)
+				{
+					labharthiDto.setYearOfBirth(nameGenderYear[2]);
+				}
 
 				// Getting and Setting BenId Token
 				WebElement cellBenIdToken = cells.get(6);

@@ -1,7 +1,7 @@
 package com.vs.anganbaditokengeneration.service;
 
 
-import java.util.List;
+import java.util.Set;
 
 import com.vs.anganbaditokengeneration.domain.LabharthiDomain;
 
@@ -9,6 +9,6 @@ public interface PDFProcessService {
 	
 	String[] getPDFData(String path);
 	
-	List<LabharthiDomain> convertPdfDataToDomainObjects(String[] lines, String pdfPath);
+	Set<LabharthiDomain> convertPdfDataToDomainObjects(String[] lines, String pdfPath);
 
 }

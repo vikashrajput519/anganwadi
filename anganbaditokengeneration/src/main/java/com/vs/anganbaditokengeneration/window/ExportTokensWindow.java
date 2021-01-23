@@ -48,7 +48,7 @@ public class ExportTokensWindow implements ActionListener{
 	public void initializer()
 	{
 		frame = new JFrame();
-		frame.setBounds(100, 100, 800, 500);
+		frame.setBounds(100, 100, 900, 600);
 		frame.getContentPane().setLayout(null);
 		
 		table = new JTable();
@@ -80,16 +80,16 @@ public class ExportTokensWindow implements ActionListener{
 		table.setModel(defaultTableModel);
 
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(10, 22, 764, 394);
+		scrollPane.setBounds(10, 22, 866, 498);
 		frame.getContentPane().add(scrollPane);
 		
 		btnExportInExcel = new JButton("Export In Excel");
-		btnExportInExcel.setBounds(209, 427, 133, 23);
+		btnExportInExcel.setBounds(287, 530, 133, 23);
 		btnExportInExcel.addActionListener(this);
 		frame.getContentPane().add(btnExportInExcel);
 		
 		btnExportInPdf = new JButton("Export In Pdf");
-		btnExportInPdf.setBounds(409, 427, 127, 23);
+		btnExportInPdf.setBounds(484, 530, 127, 23);
 		btnExportInPdf.addActionListener(this);
 		frame.getContentPane().add(btnExportInPdf);
 		
